@@ -4,8 +4,15 @@ public class pesquisa {
 
     public static void main(String[] args) {
         Scanner input = new Scanner(System.in);
+        
+        int i = 0;
 
         String ler[] = new String[10];
+
+        String vSexo[] = new String[1];
+        String vOlhos[] = new String[1];
+        String vCabelo[] = new String[1];
+        String vIdade[] = new String[1];
 
         int opcao = 0;
         while (opcao != 9) {
@@ -41,13 +48,23 @@ public class pesquisa {
                 case 1:
                     System.out.print(" 1 - Para digitar seu sexo: ( Masculino ou Feminino ) \n");
                     String sexo = input.next();
+                    vSexo[i] = sexo;
+
                     System.out.print(" 2 - Para digitar a cor dos seus olhos: ( Azul, verde ou castanho ) \n");
                     String olhos = input.next();
+                    vOlhos[i] = olhos;
+
                     System.out.print(" 3 - Para digitar a cor do seu cabelo: ( Loiro, castanho ou preto) \n");
                     String cabelo = input.next();
+                    vCabelo[i] = cabelo;
+
                     System.out.print(" 4 - Para digitar a sua idade \n");
                     String idade = input.next();
-                    break;
+                    vIdade[i] = idade;
+
+                    if (sexo.equals("-1")||olhos.equals("-1")||cabelo.equals("-1")||idade.equals("-1")) { // Este 'if' ira quebrar caso ele enconstre um '-1';
+                        break;
+                    }
 
                 case 2:
 
