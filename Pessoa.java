@@ -1,3 +1,5 @@
+import java.util.Comparator;
+
 public class Pessoa {
 
     String olho;
@@ -58,14 +60,15 @@ public class Pessoa {
                 '}';
     }
 
-    @Override
-    public int compareTo(Pessoa p) {
-        if (this.idade > p.getIdade()) {
-            return -1;
-        }
-        if (this.idade < p.getIdade()) {
-            return 1;
-        }
-        return 0;
-    }
+
+
+//
+//    public static Comparator<Pessoa> IdadePessoaComparator = new Comparator<Pessoa>() {
+//        public int compare(Pessoa pessoa1, Pessoa pessoa2) {
+//            String idadePessoa1 = String.valueOf(pessoa1.getIdade()).toUpperCase();
+//            String idadePessoa2 = String.valueOf(pessoa2.getIdade()).toUpperCase();
+//            return idadePessoa1.compareTo(idadePessoa2);
+//        }
+//
+//    };
 }

@@ -1,6 +1,6 @@
 import java.util.Scanner;
 
-public class fabrica {
+public class Fabrica {
 
     public static void AcharValor(int[] vetor) { // Função para encontrar o menor numero do array
         int valor = 0;
