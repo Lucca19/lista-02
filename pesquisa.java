@@ -1,20 +1,13 @@
-import java.util.Scanner;
+import java.util.*;
 
 
 public class pesquisa {
 
     public static void main(String[] args) {
         Scanner input = new Scanner(System.in);
-
-        int i = 0;
-
+        int posicaoPessoa = 0;
         String ler[] = new String[10];
-
-        String vSexo[] = new String[1];
-        String vOlhos[] = new String[1];
-        String vCabelo[] = new String[1];
-        int vIdade[] = new int[1];
-
+        Pessoa vPessoa[] = new Pessoa[10];
         int opcao = 0;
         while (opcao != 9) {
             System.out.print(
@@ -45,49 +38,42 @@ public class pesquisa {
 
             switch (opcao) {
                 case 1:
+                    //Instancia de pessoa
+                    Pessoa pessoa = new Pessoa();
+
                     System.out.print(" 1 - Para digitar seu sexo: ( Masculino ou Feminino ) \n");
                     String sexo = input.next();
-                    vSexo[i] = sexo;
+                    pessoa.setSexo(sexo);
 
                     System.out.print(" 2 - Para digitar a cor dos seus olhos: ( Azul, verde ou castanho ) \n");
-                    String olhos = input.next();
-                    vOlhos[i] = olhos;
+                    String olho = input.next();
+                    pessoa.setOlho(olho);
 
                     System.out.print(" 3 - Para digitar a cor do seu cabelo: ( Loiro, castanho ou preto) \n");
                     String cabelo = input.next();
-                    vCabelo[i] = cabelo;
+                    pessoa.setCabelo(cabelo);
 
                     System.out.print(" 4 - Para digitar a sua idade: \n");
                     int idade = input.nextInt();
-                    vIdade[i] = idade;
+                    pessoa.setIdade(idade);
 
-                    if (sexo.equals("-1") || olhos.equals("-1") || cabelo.equals("-1")) { // Este 'if' ira quebrar caso
-                                                                                          // ele enconstre um '-1';
-                        break;
-                    }
-                    if (idade == -1) {
+                    vPessoa[posicaoPessoa] = pessoa;
+                    posicaoPessoa++;
+                    if (sexo.equals("-1") || olho.equals("-1") || cabelo.equals("-1") || idade == -1) { // Este 'if' ira quebrar caso
+                        // ele enconstre um '-1';
                         break;
                     }
                     break;
 
                 case 2:
-                    int maior = 0;
-                    int menor = 300;
-                    for (int j=0; j<vIdade.length-1; j++){ 
-                        if(vIdade[j] > maior){
-                            maior = vIdade[j];
-                        }else if(vIdade[j] < menor){
-                            menor = vIdade[j];
-                        }
-                    }
-                    System.out.print("\nA Maior idade entre os habitantes é: " + maior);
-                    System.out.print("\nA Menor idade entre os habitantes é: " + menor);
+                Arrays.sort(vPessoa.getIdade());
+                    System.out.println(vPessoa);
                     break;
 
                 case 3:
 
 
-                break;
+                    break;
 
                 case 4:
 
@@ -130,9 +116,21 @@ public class pesquisa {
                     break;
 
                 default:
-                
+
                     break;
             }
         }
     }
+
+public void sort(final String campo, List<Pessoa> itemLocationList) {
+    Collections.sort(itemLocationList, new Comparator<Pessoa>() {
+        @Override
+        public int compare(Pessoa o1, Pessoa o2) {
+            if(campo.equals("icon")) {
+                return o1.idade.compareTo(o2.idade);
+            }
+        }
+    });
+}
+ 
 }
