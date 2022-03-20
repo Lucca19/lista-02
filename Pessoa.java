@@ -1,5 +1,3 @@
-import java.util.Comparator;
-
 public class Pessoa {
 
     String olho;
@@ -59,7 +57,6 @@ public class Pessoa {
                 ", idade=" + idade +
                 '}';
     }
-
 
 
 //

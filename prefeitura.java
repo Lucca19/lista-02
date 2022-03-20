@@ -8,27 +8,28 @@ public class Prefeitura {
     public static void main(String[] args) {
         Scanner input = new Scanner(System.in);
 
-        double[] vetorS = new double[4];
-        int[] vetorF = new int[4];
+        double[] vSalario = new double[4];
+        int[] vFilhos = new int[4];
 
         int op = 0;
 
-        while(op != 9){ //Para que volte ao menu após inserir dados ou escolher opção
-            System.out.print("|-------------Menu---------------|\n");
-            System.out.print("| 1 - Insira os dados |\n");
-            System.out.print("| 2 - Média salárial da população |\n");
-            System.out.print("| 3 - Média de número de filhos |\n");
-            System.out.print("| 4 - Maior salário |\n");
-            System.out.print("| 5 - Percentual de pessoas com salários de até R$ 400,00 |\n");
-            System.out.print("| 9 - Sair |\n");
-            System.out.print("|-----------------------------|\n");
-            System.out.print("Digite uma opção: ");
+        while(op != 9){
+            System.out.print("\n");
+            System.out.print("Menu\n");
+            System.out.print(" 1 - Cadastro de informações \n");
+            System.out.print(" 2 - A média de salário da população \n");
+            System.out.print(" 3 - A média do número de filhos \n");
+            System.out.print(" 4 - O maior salário \n");
+            System.out.print(" 5 - Porcentagem de pessoas com salários de até R$ 400,00 \n");
+            System.out.print(" 9 - Sair \n");
+            System.out.print("\n");
+            System.out.print("Digite uma das opções acima: ");
 
             op = input.nextInt();
 
-            switch (op) { // Para escolher alguma das opções do menu
+            switch (op) { 
                 case 1:
-                    for (int i = 0; i < vetorS.length; i++) { // Inserir números ao vetor
+                    for (int i = 0; i < vSalario.length; i++) { 
 
                         System.out.println("\nInsira o salário do chefe da familia: ");
                         double salario = input.nextDouble();
@@ -39,75 +40,67 @@ public class Prefeitura {
                         if (salario == -1 || filhos == -1) {
                             break;
                         } else {
-                            vetorF[i] = filhos;
-                            vetorS[i] = salario;
+                            vFilhos[i] = filhos;
+                            vSalario[i] = salario;
                         }
-
                     }
                     break;
                 case 2:
                     double soma = 0;
                     double media = 0;
-                    for (int i = 0; i<vetorS.length; i++) { // Para que corra o vetor e some todos os elementos
-                        soma = vetorS[i] + soma;
+                    for (int i = 0; i<vSalario.length; i++) { 
+                        soma = vSalario[i] + soma;
                     }
-
-                    media = soma / vetorS.length;
-                    System.out.println( "\nMédia salárial da população: " + media);
-
+                    media = soma / vSalario.length;
+                    System.out.println( "\nA Média salárial da população é: " + media);
                     break;
 
                 case 3:
                     double somaF = 0;
                     double mediaF = 0;
 
-                    for(int i=0; i<vetorF.length; i++){ // Para que corra o vetor e some todos os elementos
-                        somaF = vetorF[i] + somaF;
+                    for(int i=0; i<vFilhos.length; i++){ 
+                        somaF = vFilhos[i] + somaF;
                     }
-
-                    mediaF = somaF / vetorF.length;
-                    System.out.println( "\nMédia de filhos da população: " + mediaF);
+                    mediaF = somaF / vFilhos.length;
+                    System.out.println( "\nA Média de filhos da população é: " + mediaF);
                     break;
+
                 case 4:
                     double maior = 0;
-                    for(int i =0; i < vetorS.length; i++){ //Para encontrar o maior número do vetor
-                        if(vetorS[i] > maior){
-                            maior = vetorS[i];
+                    for(int i =0; i < vSalario.length; i++){
+                        if(vSalario[i] > maior){
+                            maior = vSalario[i];
                         }else{
                             i++;
                         }
                     }
-
-                    System.out.println( "\nMaior salário: " + maior);
+                    System.out.println( "\nO Maior salário é: " + maior);
                     break;
 
                 case 5:
                     int pessoas = 0;
                     double percentual = 0;
-                    for (int i = 0; i<vetorS.length; i++){ // Percorre o vetor e encontra todos os salarios menores que 400
-                        if(vetorS[i] <= 400){
+                    for (int i = 0; i<vSalario.length; i++){ 
+                        if(vSalario[i] <= 400){
                             pessoas++;
                         }
                     }
 
-                    percentual = (pessoas * 100) / vetorS.length;
+                    percentual = (pessoas * 100) / vSalario.length;
 
-                    System.out.println( "\nPercentual de pessoas com salários de até R$ 400,00: " + percentual + "%");
+                    System.out.println( "\nO Percentual de pessoas com salários de até R$ 400,00 é: " + percentual + "%");
                     break;
 
                 default:
-                    System.out.print("\nOpção Inválida!");
+                    System.out.print("\nESTA OPÇÃO NÃO É VALIDA");
                     break;
 
                 case 9:
-                    System.out.print("\nAté logo!");
+                    System.out.print("\nFim");
                     break;
-
-
             }
-
         }
-
     }
 }
 

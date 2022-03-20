@@ -1,5 +1,4 @@
 import java.util.Scanner;
-
 public class Pesquisa {
 
     public static void main(String[] args) {
@@ -7,8 +6,8 @@ public class Pesquisa {
         int posicaoPessoa = 0;
         Pessoa vPessoa[] = new Pessoa[3];
         int opcao = 0;
-        while (opcao != 9) {
-            System.out.println("_______________________________________________________________________________________________________________");
+        while (opcao != 12) {
+            System.out.println("___________________________________________________________________________________________________________________________");
             System.out.println(" 1 - CADASTRAR INFORMAÇÕES");
             System.out.println(" Escolha qual informação voce deseja saber:");
             System.out.println(" 2 - A maior e menor idade dos habitantes");
@@ -21,35 +20,30 @@ public class Pesquisa {
             System.out.println(" 10 - A média de idade dos habitantes");
             System.out.println(" 11 - O número total de habitantes");
             System.out.println(" 12 - Sair");
-            System.out.println("_______________________________________________________________________________________________________________");
+            System.out.println("___________________________________________________________________________________________________________________________");
             System.out.println(" Digite uma das opções acima:");
             opcao = input.nextInt();
 
-            switch (opcao) {
-                case (0): {
-                    for (Pessoa pessoa : vPessoa) {
-                        if (pessoa != null) {
-                            System.out.println(pessoa.toString());
-                        } else {
-                            System.out.println("null");
-                        }
-                    }
-                    break;
+            for (Pessoa pessoa : vPessoa) {
+                if (pessoa != null) {
+                    System.out.println(pessoa.toString());
                 }
+            }
+
+            switch (opcao) {
                 case (1): {
-                    //Instancia de pessoa
+                    // Instancia de pessoa
                     Pessoa pessoa = new Pessoa();
 
                     System.out.println(" 1 - Para digitar seu sexo: ( Masculino ou Feminino )");
                     String sexo = input.next();
                     pessoa.setSexo(sexo);
-                    
 
                     System.out.println(" 2 - Para digitar a cor dos seus olhos: ( Azul, verde ou castanho )");
                     String olho = input.next();
                     pessoa.setOlho(olho);
 
-                    System.out.println(" 3 - Para digitar a cor do seu cabelo: ( Loiro, castanho ou preto)");
+                    System.out.println(" 3 - Para digitar a cor do seu cabelo: ( Loiro, castanho ou preto )");
                     String cabelo = input.next();
                     pessoa.setCabelo(cabelo);
 
@@ -59,8 +53,8 @@ public class Pesquisa {
 
                     vPessoa[posicaoPessoa] = pessoa;
                     posicaoPessoa++;
-                    
-                    if (sexo.equals("-1") || olho.equals("-1") || cabelo.equals("-1") || idade == -1) { // Este 'if' ira quebrar caso
+                    if (sexo.equals("-1") || olho.equals("-1") || cabelo.equals("-1") || idade == -1) { // Este 'if' ira
+                                                                                                        // quebrar caso
                         // ele enconstre um '-1';
                         break;
                     }
@@ -80,7 +74,6 @@ public class Pesquisa {
                             menorIdadeHab = vPessoa[i].getIdade();
                         }
                     }
-
                     System.out.println("A menor idade entre os habitantes é de : " + menorIdadeHab + " anos.");
                     System.out.println("A maior idade entre os habitantes é de : " + maiorIdadeHab + " anos.");
                     break;
@@ -97,6 +90,7 @@ public class Pesquisa {
                     System.out.println("A maior idade entre as mulheres é de : " + maiorIdadeMulheres + " anos.");
                     break;
                 }
+
                 case (4): {
                     int maiorIdadeHomens = 0;
                     for (int i = 1; i < vPessoa.length; i++) {
@@ -106,38 +100,64 @@ public class Pesquisa {
                             }
                         }
                     }
-
                     System.out.println("A maior idade entre os homens é de : " + maiorIdadeHomens + " anos.");
                     break;
                 }
 
                 case 5:
-                    int mediaIdademulheres = 0;
-                    for (int i = 1; i < vPessoa.length; i++) {
-                        if (vPessoa[i].getSexo().equals("Feminino") && vPessoa[i].getIdade() >= 18 && vPessoa[i].getIdade() <= 35) {
-                            if (vPessoa[i].getOlho().equals("verde") && vPessoa[i].getCabelo().equals("loiro")) {
-                                    mediaIdademulheres = mediaIdademulheres + 1;
+                    int numeroMulheres = 0;
+                    for (int i = 0; i < vPessoa.length; i++) {
+                        if (vPessoa[i].getSexo().equalsIgnoreCase("Feminino") && vPessoa[i].getIdade() >= 18 && vPessoa[i].getIdade() <= 35) {
+                            if (vPessoa[i].getOlho().equalsIgnoreCase("verde") && vPessoa[i].getCabelo().equalsIgnoreCase("loiro")) {
+                                numeroMulheres++;
                             }
                         }
                     }
-                    System.out.println(mediaIdademulheres);
-
+                    System.out.println("O numero de mulheres loiras com olhos verde e de cabelo castanho é de: " + numeroMulheres + " mulheres.");
                     break;
 
                 case 6:
-
+                    int mMulheres = 0;
+                    int i = 0;
+                    int mediaMulheres = 0;
+                    for (int j = 0; j < vPessoa.length; j++) {
+                        if (vPessoa[j].getSexo().equalsIgnoreCase("Feminino") && vPessoa[j].getIdade() >= 18 && vPessoa[j].getIdade() <= 35) {
+                            if (vPessoa[j].getOlho().equalsIgnoreCase("verde") && vPessoa[j].getCabelo().equalsIgnoreCase("loiro")) {
+                                mMulheres++;
+                            }
+                        }
+                    }
+                    mediaMulheres = (mMulheres * 100) / vPessoa[i].getSexo().equals();
+                    System.out.println("O numero de mulheres loiras com olhos verde e de cabelo castanho é de: " + mMulheres + " mulheres.");
                     break;
 
                 case 7:
-
+                    int nHomens = 0;
+                    for (int j = 0; j < vPessoa.length; j++) {
+                        if (vPessoa[j].getSexo().equalsIgnoreCase("Masculino") && vPessoa[j].getIdade() >= 40 && vPessoa[j].getIdade() <= 50) {
+                            if (vPessoa[j].getOlho().equalsIgnoreCase("castanho") && vPessoa[j].getCabelo().equalsIgnoreCase("preto")) {
+                                nHomens++;
+                            }
+                        }
+                    }
+                    System.out.println("Existem " + nHomens + " homem(ns) com olhos castanhos e cabelo pretos.");
                     break;
 
                 case 8:
-
-                    break;
-
-                case 9:
-
+                    int mHomens = 0;
+                    int media = 0;
+                    for (int j = 0; j < vPessoa.length; j++) {
+                        if (vPessoa[j].getSexo().equalsIgnoreCase("Masculino") && vPessoa[j].getIdade() >= 40
+                                && vPessoa[j].getIdade() <= 50) {
+                            if (vPessoa[j].getOlho().equalsIgnoreCase("castanho")
+                                    && vPessoa[j].getCabelo().equalsIgnoreCase("preto")) {
+                                mHomens++;
+                            }
+                        }
+                    }
+                    int j =0;
+                    media = (mHomens * 100) / vPessoa[j].getSexo().equals();
+                    System.out.println(media + "% em media de homem(ns) tem olhos castanhos e cabelos pretos.");
                     break;
 
                 case 10:
@@ -149,16 +169,13 @@ public class Pesquisa {
                     break;
 
                 case 12:
-
-                    break;
-
-                case 13:
-
+                System.out.print("\nFim");
                     break;
 
                 default:
-
+                System.out.print("\nESTA OPÇÃO NÃO É VALIDA");
                     break;
+                    
             }
         }
     }
